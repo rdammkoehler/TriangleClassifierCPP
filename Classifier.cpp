@@ -17,22 +17,27 @@ bool hasLengths(Triangle triangle)
 	   isZero(triangle.getLength2()));
 }
 
-bool hasEqualSides(Triangle triangle) 
+bool hasThreeEqualSides(Triangle triangle) 
 {
   return triangle.getLength0() == triangle.getLength1() &&
     triangle.getLength0() == triangle.getLength2();
 }
 
+bool hasTwoEqualSides(Triangle triangle)
+{
+  return triangle.getLength0() == triangle.getLength1() ||
+    triangle.getLength0() == triangle.getLength2() ||
+    triangle.getLength1() == triangle.getLength2();
+}
+
 Classifier::Type classifyByLengths(Triangle triangle)
 {
   Classifier::Type type = Classifier::invalid;
-  if (hasEqualSides(triangle))
+  if (hasThreeEqualSides(triangle))
     {
       type = Classifier::equilateral;
     } 
-  else if (triangle.getLength0() == triangle.getLength1() ||
-	   triangle.getLength0() == triangle.getLength2() ||
-	   triangle.getLength1() == triangle.getLength2())
+  else if (hasTwoEqualSides(triangle))
     {
       type = Classifier::isosceles;
     } 
