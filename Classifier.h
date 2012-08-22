@@ -28,7 +28,10 @@ namespace Triangles
       };
 
     Type classify(Triangle);
-
+  private:
+    bool isNinty(float angle);
+    bool greaterThanNinty(float angle);
+    bool lessThanNinty(float angle);
   };
 
 }
