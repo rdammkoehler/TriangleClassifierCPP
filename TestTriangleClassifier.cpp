@@ -57,6 +57,16 @@ TEST(Classifier,ValidationFailsWithZeroLengthSide0)
   EXPECT_EQ(Classifier::invalid, classify(0, 1, 2)) << "Expected Invalid Classification, side length of zero";
 }
 
+TEST(Classifier,ValidationFailsWithZeroLengthSide1)
+{
+  EXPECT_EQ(Classifier::invalid, classify(1, 0, 2)) << "Expected Invalid Classification, side length of zero";
+}
+
+TEST(Classifier,ValidationFailsWithZeroLengthSide2)
+{
+  EXPECT_EQ(Classifier::invalid, classify(1, 2, 0)) << "Expected Invalid Classification, side length of zero";
+}
+
 int main(int argc, char *argv[]) {
   ::testing::InitGoogleTest(&argc,argv);
   return RUN_ALL_TESTS();
