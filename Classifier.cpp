@@ -78,6 +78,25 @@ bool Classifier::valid(Triangle triangle)
       valid &= triangle.getLength0() > 0;
       valid &= triangle.getLength1() > 0;
       valid &= triangle.getLength2() > 0;
+ 
+      int longest = 0;
+      int shortSideSum = 0;
+      if (longest < triangle.getLength0())
+	{
+	  longest = triangle.getLength0();
+	  shortSideSum = triangle.getLength1() + triangle.getLength2();
+	}
+      if (longest < triangle.getLength1())
+	{
+	  longest = triangle.getLength1();
+	  shortSideSum = triangle.getLength0() + triangle.getLength2();
+	}
+      if (longest < triangle.getLength2())
+	{
+	  longest = triangle.getLength2();
+	  shortSideSum = triangle.getLength0() + triangle.getLength1();
+	}
+      valid &= longest < shortSideSum;
     }
   return valid;
 }

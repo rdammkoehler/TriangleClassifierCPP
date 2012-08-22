@@ -67,6 +67,16 @@ TEST(Classifier,ValidationFailsWithZeroLengthSide2)
   EXPECT_EQ(Classifier::invalid, classify(1, 2, 0)) << "Expected Invalid Classification, side length of zero";
 }
 
+TEST(Classifier,ValidationFailsWhenLongestSideIsLongerThanShorterSidesSum)
+{
+  EXPECT_EQ(Classifier::invalid, classify(9, 5, 3)) << "Expected Invalid Classification, longest side is longer than the sum of the shorter sides";
+}
+
+TEST(Classifier,ValidationFailsWhenLongestSideIsEqualToShorterSidesSum)
+{
+  EXPECT_EQ(Classifier::invalid, classify(8, 5, 3)) << "Expected Invalid Classification, longest side is equal to the sum of the shorter sides";
+}
+
 int main(int argc, char *argv[]) {
   ::testing::InitGoogleTest(&argc,argv);
   return RUN_ALL_TESTS();
