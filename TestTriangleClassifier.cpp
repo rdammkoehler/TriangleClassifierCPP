@@ -47,6 +47,16 @@ TEST(Classifier,AcuteTriangleDetection)
   EXPECT_EQ(Classifier::acute, classify(80.0f, 50.0f, 50.f)) << "Expected Acute Triangle Classification";
 }
 
+TEST(Classifier,ValidationFailsWithTooMuchAngle)
+{
+  EXPECT_EQ(Classifier::invalid, classify(100.0f, 100.f, 100.0f)) << "Expected Invalid Classification, total angle > 180 degrees";
+}
+
+TEST(Classifier,ValidationFailsWithZeroLengthSide)
+{
+  EXPECT_EQ(Classifier::invalid, classify(0, 1, 2)) << "Expected Invalid Classification, side length of zero";
+}
+
 int main(int argc, char *argv[]) {
   ::testing::InitGoogleTest(&argc,argv);
   return RUN_ALL_TESTS();
