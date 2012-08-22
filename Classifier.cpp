@@ -5,14 +5,24 @@
 using namespace Triangles;
 using namespace std;
 
+bool isZero(int d)
+{
+  return 0 == d;
+}
+
+bool hasLengths(Triangle triangle)
+{
+  return !(isZero(triangle.getLength0()) &&
+	   isZero(triangle.getLength1()) &&
+	   isZero(triangle.getLength2()));
+}
+
 Classifier::Type Classifier::classify(Triangle triangle)
 {
   Classifier::Type type = invalid;
   if ( valid(triangle) ) 
     {
-      if (triangle.getLength0() != 0 &&
-	  triangle.getLength1() != 0 &&
-	  triangle.getLength2() != 0)
+      if (hasLengths(triangle))
 	{
 	  if (triangle.getLength0() == triangle.getLength1() &&
 	      triangle.getLength0() == triangle.getLength2())
@@ -91,18 +101,6 @@ bool validAngles(Triangle triangle)
 {
   float sumOfAngles = sumAngles(triangle);
   return ( isZero(sumOfAngles) || isOneEighty(sumOfAngles) );
-}
-
-bool isZero(int d)
-{
-  return 0 == d;
-}
-
-bool hasLengths(Triangle triangle)
-{
-  return !(isZero(triangle.getLength0()) &&
-	   isZero(triangle.getLength1()) &&
-	   isZero(triangle.getLength2()));
 }
 
 bool isNegative(int d)
