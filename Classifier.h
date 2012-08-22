@@ -28,11 +28,6 @@ namespace Triangles
       };
 
     Type classify(Triangle);
-  private:
-    bool isNinty(float);
-    bool greaterThanNinty(float);
-    bool lessThanNinty(float);
-    bool valid(Triangle);
   };
 
 }
