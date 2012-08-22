@@ -88,13 +88,18 @@ bool validAngles(Triangle triangle)
   return ( isZero(sumOfAngles) || isOneEighty(sumOfAngles) );
 }
 
+bool hasLengths(Triangle triangle)
+{
+  return triangle.getLength0() != 0 ||
+    triangle.getLength1() != 0 ||
+    triangle.getLength2() != 0;
+}
+
 bool Classifier::valid(Triangle triangle)
 {
   bool valid = true;
   valid &= validAngles(triangle);
-  if ( triangle.getLength0() != 0 ||
-       triangle.getLength1() != 0 ||
-       triangle.getLength2() != 0)
+  if ( hasLengths(triangle) )
     {
       valid &= triangle.getLength0() > 0;
       valid &= triangle.getLength1() > 0;
