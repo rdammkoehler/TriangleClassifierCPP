@@ -57,7 +57,20 @@ TEST(Classifier,ValidationFailsWithTooLittleAngle)
   EXPECT_EQ(Classifier::invalid, classify(2.0f, 4.0f, 5.0f)) << "Expected Invalid Classification, total angle < 180 degrees";
 }
 
-//TODO: Test for negative angles too!
+TEST(Classifier,ValidateFailsWithNegativeAngle0) 
+{
+  EXPECT_EQ(Classifier::invalid, classify(-90.0f, 45.0f, 45.0f)) << "Expected Invalid Classification, contains negative angle";
+}
+
+TEST(Classifier,ValidateFailsWithNegativeAngle1) 
+{
+  EXPECT_EQ(Classifier::invalid, classify(45.0f, -90.0f, 45.0f)) << "Expected Invalid Classification, contains negative angle";
+}
+
+TEST(Classifier,ValidateFailsWithNegativeAngle2) 
+{
+  EXPECT_EQ(Classifier::invalid, classify(45.0f, 45.0f, -90.0f)) << "Expected Invalid Classification, contains negative angle";
+}
 
 TEST(Classifier,ValidationFailsWithZeroLengthSide0)
 {

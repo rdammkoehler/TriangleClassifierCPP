@@ -115,10 +115,20 @@ bool isOneEighty(float f)
   return equal(180.0f, f);
 }
 
+bool isNegative(float f)
+{
+  return 0.0f > f;
+}
+
+bool hasNegativeAngles(Triangle triangle)
+{
+  return isNegative(triangle.getAngle0()) || isNegative(triangle.getAngle1()) || isNegative(triangle.getAngle2());
+}
+
 bool validAngles(Triangle triangle)
 {
   float sumOfAngles = sumAngles(triangle);
-  return ( isZero(sumOfAngles) || isOneEighty(sumOfAngles) );
+  return !hasNegativeAngles(triangle) && ( isZero(sumOfAngles) || isOneEighty(sumOfAngles) );
 }
 
 bool isNegative(int d)
