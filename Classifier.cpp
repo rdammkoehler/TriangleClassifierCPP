@@ -1,5 +1,6 @@
 #include "Classifier.h"
 #include <math.h>
+#include <iostream>
 
 using namespace Triangles;
 using namespace std;
@@ -66,11 +67,21 @@ bool Classifier::lessThanNinty(float angle)
   return angle < 90.0f;
 }
 
+float sumAngles(Triangle triangle)
+{
+  return triangle.getAngle0() + triangle.getAngle1() + triangle.getAngle2();
+}
+
+bool validAngles(Triangle triangle)
+{
+  float sumOfAngles = sumAngles(triangle);
+  return ( fabs( 0.0f - sumOfAngles ) < 0.0001 || fabs( 180.0f - sumOfAngles ) < 0.0001 );
+}
+
 bool Classifier::valid(Triangle triangle)
 {
   bool valid = true;
-  float sumOfAngles = triangle.getAngle0() + triangle.getAngle1() + triangle.getAngle2();
-  valid &= ( fabs( 0.0f - sumOfAngles ) < 0.0001 || fabs( 180.0f - sumOfAngles ) < 0.0001 );
+  valid &= validAngles(triangle);
   if ( triangle.getLength0() != 0 ||
        triangle.getLength1() != 0 ||
        triangle.getLength2() != 0)
