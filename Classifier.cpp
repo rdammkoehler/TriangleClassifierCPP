@@ -124,6 +124,28 @@ bool lengthsAreValid(Triangle triangle)
   return valid;
 }
 
+bool longestSideIsntTooLong(Triangle triangle)
+{
+  int longest = 0;
+  int shortSideSum = 0;
+  if (longest < triangle.getLength0())
+    {
+      longest = triangle.getLength0();
+      shortSideSum = triangle.getLength1() + triangle.getLength2();
+    }
+  if (longest < triangle.getLength1())
+    {
+      longest = triangle.getLength1();
+      shortSideSum = triangle.getLength0() + triangle.getLength2();
+    }
+  if (longest < triangle.getLength2())
+    {
+      longest = triangle.getLength2();
+      shortSideSum = triangle.getLength0() + triangle.getLength1();
+    }
+  return longest < shortSideSum;
+}
+
 bool Classifier::valid(Triangle triangle)
 {
   bool valid = true;
@@ -131,25 +153,7 @@ bool Classifier::valid(Triangle triangle)
   if ( hasLengths(triangle) )
     {
       valid &= lengthsAreValid(triangle);
- 
-      int longest = 0;
-      int shortSideSum = 0;
-      if (longest < triangle.getLength0())
-	{
-	  longest = triangle.getLength0();
-	  shortSideSum = triangle.getLength1() + triangle.getLength2();
-	}
-      if (longest < triangle.getLength1())
-	{
-	  longest = triangle.getLength1();
-	  shortSideSum = triangle.getLength0() + triangle.getLength2();
-	}
-      if (longest < triangle.getLength2())
-	{
-	  longest = triangle.getLength2();
-	  shortSideSum = triangle.getLength0() + triangle.getLength1();
-	}
-      valid &= longest < shortSideSum;
+      valid &= longestSideIsntTooLong(triangle);
     }
   return valid;
 }
