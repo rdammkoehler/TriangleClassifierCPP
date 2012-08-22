@@ -23,6 +23,10 @@ namespace Triangles
     
     ~Triangle() {};
     
+    int getLength0() { return length0; }
+    int getLength1() { return length1; }
+    int getLength2() { return length2; }
+
   private:
     int length0;
     int length1;
