@@ -41,6 +41,9 @@ Classifier::Type Classifier::classify(Triangle triangle)
 	{
 	  type = obtuse;
 	}
+      else {
+	type = acute;
+      }
     }
   return type;
 }
