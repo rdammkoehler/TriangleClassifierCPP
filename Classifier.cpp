@@ -17,11 +17,16 @@ bool hasLengths(Triangle triangle)
 	   isZero(triangle.getLength2()));
 }
 
+bool hasEqualSides(Triangle triangle) 
+{
+  return triangle.getLength0() == triangle.getLength1() &&
+    triangle.getLength0() == triangle.getLength2();
+}
+
 Classifier::Type classifyByLengths(Triangle triangle)
 {
   Classifier::Type type = Classifier::invalid;
-  if (triangle.getLength0() == triangle.getLength1() &&
-      triangle.getLength0() == triangle.getLength2())
+  if (hasEqualSides(triangle))
     {
       type = Classifier::equilateral;
     } 
