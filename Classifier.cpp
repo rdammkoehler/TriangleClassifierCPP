@@ -1,5 +1,5 @@
 #include "Classifier.h"
-#include <iostream>
+#include <math.h>
 
 using namespace Triangles;
 using namespace std;
@@ -35,13 +35,19 @@ Classifier::Type Classifier::classify(Triangle triangle)
 	{
 	  type = right;
 	}
+      else if (greaterThanNinty(triangle.getAngle0()) ||
+	       greaterThanNinty(triangle.getAngle1()) ||
+	       greaterThanNinty(triangle.getAngle2()))
+	{
+	  type = obtuse;
+	}
     }
   return type;
 }
 
 bool Classifier::isNinty(float angle)
 {
-  return true;
+  return fabs(90.0f - angle) < 0.0001;
 }
 
 bool Classifier::greaterThanNinty(float angle)
