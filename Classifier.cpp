@@ -53,18 +53,28 @@ bool lessThanNinty(float angle)
   return angle < 90.0f;
 }
 
+bool hasNintyDegreeAngle(Triangle triangle)
+{
+  return isNinty(triangle.getAngle0()) ||
+    isNinty(triangle.getAngle1()) ||
+    isNinty(triangle.getAngle2());
+}
+
+bool hasObtuseAngle(Triangle triangle)
+{
+  return greaterThanNinty(triangle.getAngle0()) ||
+    greaterThanNinty(triangle.getAngle1()) ||
+    greaterThanNinty(triangle.getAngle2());
+}
+
 Classifier::Type classifyByAngles(Triangle triangle)
 {
   Classifier::Type type = Classifier::invalid;
-  if (isNinty(triangle.getAngle0()) ||
-      isNinty(triangle.getAngle1()) ||
-      isNinty(triangle.getAngle2()))
+  if (hasNintyDegreeAngle(triangle))
     {
       type = Classifier::right;
     }
-  else if (greaterThanNinty(triangle.getAngle0()) ||
-	   greaterThanNinty(triangle.getAngle1()) ||
-	   greaterThanNinty(triangle.getAngle2()))
+  else if (hasObtuseAngle(triangle))
     {
       type = Classifier::obtuse;
     }
