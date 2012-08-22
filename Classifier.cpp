@@ -72,10 +72,20 @@ float sumAngles(Triangle triangle)
   return triangle.getAngle0() + triangle.getAngle1() + triangle.getAngle2();
 }
 
+bool isZero(float f) 
+{
+  return fabs( 0.0f - f ) < 0.0001;
+}
+
+bool isOneEighty(float f) 
+{
+  return fabs( 180.0f - f ) < 0.0001;
+}
+
 bool validAngles(Triangle triangle)
 {
   float sumOfAngles = sumAngles(triangle);
-  return ( fabs( 0.0f - sumOfAngles ) < 0.0001 || fabs( 180.0f - sumOfAngles ) < 0.0001 );
+  return ( isZero(sumOfAngles) || isOneEighty(sumOfAngles) );
 }
 
 bool Classifier::valid(Triangle triangle)
