@@ -72,14 +72,19 @@ float sumAngles(Triangle triangle)
   return triangle.getAngle0() + triangle.getAngle1() + triangle.getAngle2();
 }
 
+bool equal(float a, float b) 
+{
+  return fabs( a - b ) < 0.0001;
+}
+
 bool isZero(float f) 
 {
-  return fabs( 0.0f - f ) < 0.0001;
+  return equal(0.0f, f);
 }
 
 bool isOneEighty(float f) 
 {
-  return fabs( 180.0f - f ) < 0.0001;
+  return equal(180.0f, f);
 }
 
 bool validAngles(Triangle triangle)
