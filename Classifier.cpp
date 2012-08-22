@@ -146,14 +146,18 @@ bool longestSideIsntTooLong(Triangle triangle)
   return longest < shortSideSum;
 }
 
-bool Classifier::valid(Triangle triangle)
+bool validLengths(Triangle triangle) 
 {
   bool valid = true;
-  valid &= validAngles(triangle);
   if ( hasLengths(triangle) )
     {
       valid &= lengthsAreValid(triangle);
       valid &= longestSideIsntTooLong(triangle);
     }
   return valid;
+}
+
+bool Classifier::valid(Triangle triangle)
+{
+  return validAngles(triangle) && validLengths(triangle);
 }
