@@ -111,9 +111,9 @@ bool Classifier::valid(Triangle triangle)
   valid &= validAngles(triangle);
   if ( hasLengths(triangle) )
     {
-      valid &= triangle.getLength0() > 0;
-      valid &= triangle.getLength1() > 0;
-      valid &= triangle.getLength2() > 0;
+      valid &= !isZero(triangle.getLength0());
+      valid &= !isZero(triangle.getLength1());
+      valid &= !isZero(triangle.getLength2());
  
       int longest = 0;
       int shortSideSum = 0;
