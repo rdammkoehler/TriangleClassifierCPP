@@ -42,6 +42,11 @@ TEST(Classifier,ObtuseTriangleDetection)
   EXPECT_EQ(Classifier::obtuse, classify(100.0f, 40.0f, 40.0f)) << "Expected Obtuse Triangle Classification";
 }
 
+TEST(Classifier,AcuteTriangleDetection)
+{
+  EXPECT_EQ(Classifier::acute, classify(80.0f, 50.0f, 50.f)) << "Expected Acute Triangle Classification";
+}
+
 int main(int argc, char *argv[]) {
   ::testing::InitGoogleTest(&argc,argv);
   return RUN_ALL_TESTS();
