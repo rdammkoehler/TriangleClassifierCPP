@@ -1,6 +1,6 @@
 #include "Classifier.h"
 
-Classifier::Type Classifier::classify(Triangle triangle)
+Triangles::Classifier::Type Triangles::Classifier::classify(Triangle triangle)
 {
   return invalid;
 }
