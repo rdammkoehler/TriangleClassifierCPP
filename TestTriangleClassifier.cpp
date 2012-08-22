@@ -72,6 +72,26 @@ TEST(Classifier,ValidationFailsWithZeroLengthSide2)
   EXPECT_EQ(Classifier::invalid, classify(1, 2, 0)) << "Expected Invalid Classification, side length of zero";
 }
 
+TEST(Classifier,ValidationFailsIfLength0IsNegative)
+{
+  EXPECT_EQ(Classifier::invalid, classify(-2, 2, 2)) << "Expected Invalid Classification, side length is negative";
+}
+
+TEST(Classifier,ValidationFailsIfLength1IsNegative)
+{
+  EXPECT_EQ(Classifier::invalid, classify(2, -2, 2)) << "Expected Invalid Classification, side length is negative";
+}
+
+TEST(Classifier,ValidationFailsIfLength2IsNegative)
+{
+  EXPECT_EQ(Classifier::invalid, classify(2, 2, -2)) << "Expected Invalid Classification, side length is negative";
+}
+
+TEST(Classifier,ValidationFailsIfLengthsAreNegative)
+{
+  EXPECT_EQ(Classifier::invalid, classify(-2, -2, -2)) << "Expected Invalid Classification, side length is negative";
+}
+
 TEST(Classifier,ValidationFailsWhenLongestSideIsLongerThanShorterSidesSum)
 {
   EXPECT_EQ(Classifier::invalid, classify(9, 5, 3)) << "Expected Invalid Classification, longest side is longer than the sum of the shorter sides";

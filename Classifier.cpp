@@ -105,15 +105,32 @@ bool hasLengths(Triangle triangle)
 	   isZero(triangle.getLength2()));
 }
 
+bool isNegative(int d)
+{
+  return 0 > d;
+}
+
+bool lengthIsValid(int length) 
+{
+  return !isZero(length) && !isNegative(length);
+}
+
+bool lengthsAreValid(Triangle triangle)
+{
+  bool valid = true;
+  valid &= lengthIsValid(triangle.getLength0());
+  valid &= lengthIsValid(triangle.getLength1());
+  valid &= lengthIsValid(triangle.getLength2());
+  return valid;
+}
+
 bool Classifier::valid(Triangle triangle)
 {
   bool valid = true;
   valid &= validAngles(triangle);
   if ( hasLengths(triangle) )
     {
-      valid &= !isZero(triangle.getLength0());
-      valid &= !isZero(triangle.getLength1());
-      valid &= !isZero(triangle.getLength2());
+      valid &= lengthsAreValid(triangle);
  
       int longest = 0;
       int shortSideSum = 0;
