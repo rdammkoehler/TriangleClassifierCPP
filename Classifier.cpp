@@ -1,6 +1,5 @@
 #include "Classifier.h"
 #include <math.h>
-#include <iostream>
 
 using namespace Triangles;
 using namespace std;

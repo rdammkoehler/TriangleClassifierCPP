@@ -1,7 +1,6 @@
 #include "Triangle.h"
 #include "Classifier.h"
 #include "gtest/gtest.h"
-#include <iostream>
 
 using ::Triangles::Triangle;
 using ::Triangles::Classifier;
