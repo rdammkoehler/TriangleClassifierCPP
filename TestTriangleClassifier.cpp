@@ -8,12 +8,12 @@ using namespace std;
 
 Classifier::Type classify(int length0, int length1, int length2) 
 {
-  return Classifier().classify(Triangle(length0, length1, length2));
+  return Classifier().classify(Triangle(length0, length1, length2, 0.0f, 0.0f, 0.0f));
 }
 
 Classifier::Type classify(float angle0, float angle1, float angle2)
 {
-  return Classifier().classify(Triangle(angle0, angle1, angle2));
+  return Classifier().classify(Triangle(0.0f, 0.0f, 0.0f, angle0, angle1, angle2));
 }
 
 TEST(Classifier,EquilateralDetection) 
