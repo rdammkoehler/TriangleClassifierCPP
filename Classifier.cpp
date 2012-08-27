@@ -1,6 +1,7 @@
 #include "Classifier.h"
 #include <math.h>
 #include <float.h>
+#include <limits.h>
 
 using namespace Triangles;
 using namespace std;
@@ -152,7 +153,7 @@ bool Classifier::lengthsAreValid(Triangle triangle)
 
 bool Classifier::longestSideIsntTooLong(Triangle triangle)
 {
-  int longest = 0;
+  int longest = INT_MIN;
   int shortSideSum = 0;
   if (longest < triangle.getLength0())
     {
