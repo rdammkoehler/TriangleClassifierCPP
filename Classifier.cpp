@@ -1,5 +1,6 @@
 #include "Classifier.h"
 #include <math.h>
+#include <float.h>
 
 using namespace Triangles;
 using namespace std;
@@ -49,7 +50,7 @@ Classifier::Type Classifier::classifyByLengths(Triangle triangle)
 
 bool Classifier::isNinty(float angle)
 {
-  return fabs(90.0f - angle) < 0.0001;
+  return equal(90.0f, angle);
 }
 
 bool Classifier::greaterThanNinty(float angle)
@@ -101,7 +102,7 @@ float Classifier::sumAngles(Triangle triangle)
 
 bool Classifier::equal(float a, float b) 
 {
-  return fabs( a - b ) < 0.0001;
+  return fabs( a - b ) < FLT_EPSILON;
 }
 
 bool Classifier::isZero(float f) 
