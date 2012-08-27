@@ -3,13 +3,6 @@
 
 using namespace Triangles;
 
-bool Classifier::hasLengths(Triangle triangle)
-{
-  return !( validator.isZero(triangle.getLength0()) &&
-	    validator.isZero(triangle.getLength1()) &&
-	    validator.isZero(triangle.getLength2()) );
-}
-
 bool Classifier::hasThreeEqualSides(Triangle triangle) 
 {
   return triangle.getLength0() == triangle.getLength1() &&
@@ -93,7 +86,7 @@ Classifier::Type Classifier::classify(Triangle triangle)
   Classifier::Type type = invalid;
   if ( validator.isValid(triangle) ) 
     {
-      if ( hasLengths(triangle) )
+      if ( triangle.hasLengths() )
 	{
 	  type = classifyByLengths(triangle);
 	} 

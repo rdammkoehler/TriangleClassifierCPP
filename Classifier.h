@@ -32,7 +32,6 @@ namespace Triangles
     Type classify(Triangle);
 
   private:
-    bool hasLengths(Triangle);
     bool hasThreeEqualSides(Triangle);
     bool hasTwoEqualSides(Triangle);
     Type classifyByLengths(Triangle);

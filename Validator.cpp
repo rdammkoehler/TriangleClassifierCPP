@@ -4,7 +4,6 @@
 
 using namespace Triangles;
 
-
 bool Validator::equal(float a, float b) 
 {
   return fabs( a - b ) < FLT_EPSILON;
@@ -23,14 +22,6 @@ bool Validator::isNegative(float d)
 bool Validator::isOneEighty(float f) 
 {
   return equal(180.0f, f);
-}
-
-//!DRY
-bool Validator::hasLengths(Triangle triangle)
-{
-  return !( isZero(triangle.getLength0()) &&
-	    isZero(triangle.getLength1()) &&
-	    isZero(triangle.getLength2()) );
 }
 
 bool Validator::hasNegativeAngles(Triangle triangle)
@@ -88,7 +79,7 @@ bool Validator::longestSideIsntTooLong(Triangle triangle)
 bool Validator::validLengths(Triangle triangle) 
 {
   bool valid = true;
-  if ( hasLengths(triangle) ) 
+  if ( triangle.hasLengths() ) 
     {
       valid &= lengthsAreValid(triangle);
       valid &= longestSideIsntTooLong(triangle);

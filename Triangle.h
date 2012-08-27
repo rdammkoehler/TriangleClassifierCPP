@@ -1,5 +1,7 @@
 #ifndef TRIANGLE_H
 #define TRIANGLE_H
+#include <math.h>
+#include <float.h>
 
 namespace Triangles 
 {
@@ -25,8 +27,15 @@ namespace Triangles
     float getAngle0() { return angle0; }
     float getAngle1() { return angle1; }
     float getAngle2() { return angle2; }
+    bool hasLengths() 
+    {
+      return !( isZero(length0) &&
+		isZero(length1) &&
+		isZero(length2) );
+    }
 
   private:
+    bool isZero(float f) { return fabs( 0.0f -f ) < FLT_EPSILON; }
     float length0;
     float length1;
     float length2;

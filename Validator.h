@@ -14,7 +14,6 @@ namespace Triangles
   private:
     bool isNegative(float);
     bool isOneEighty(float);
-    bool hasLengths(Triangle); //!DRY
     float sumAngles(Triangle);
     bool hasNegativeAngles(Triangle);
     bool validAngles(Triangle);
