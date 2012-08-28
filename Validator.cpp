@@ -7,12 +7,12 @@ using namespace Triangles;
 bool Validator::hasNegativeAngles(Triangle triangle)
 {
   FloatMath math = FloatMath();
-  return math.isNegative(triangle.getAngle0()) || math.isNegative(triangle.getAngle1()) || math.isNegative(triangle.getAngle2());
+  return math.isNegative(triangle.getA()) || math.isNegative(triangle.getB()) || math.isNegative(triangle.getC());
 }
 
 float Validator::sumAngles(Triangle triangle)
 {
-  return triangle.getAngle0() + triangle.getAngle1() + triangle.getAngle2();
+  return triangle.getA() + triangle.getB() + triangle.getC();
 }
 
 bool Validator::validAngles(Triangle triangle)
@@ -31,9 +31,9 @@ bool Validator::lengthIsValid(float length)
 bool Validator::lengthsAreValid(Triangle triangle)
 {
   bool valid = true;
-  valid &= lengthIsValid(triangle.getLength0());
-  valid &= lengthIsValid(triangle.getLength1());
-  valid &= lengthIsValid(triangle.getLength2());
+  valid &= lengthIsValid(triangle.geta());
+  valid &= lengthIsValid(triangle.getb());
+  valid &= lengthIsValid(triangle.getc());
   return valid;
 }
 
@@ -41,20 +41,20 @@ bool Validator::longestSideIsntTooLong(Triangle triangle)
 {
   float longest = FLT_MIN;
   float shortSideSum = FLT_MIN;
-  if ( longest < triangle.getLength0() )
+  if ( longest < triangle.geta() )
     {
-      longest = triangle.getLength0();
-      shortSideSum = triangle.getLength1() + triangle.getLength2();
+      longest = triangle.geta();
+      shortSideSum = triangle.getb() + triangle.getc();
     }
-  if ( longest < triangle.getLength1() )
+  if ( longest < triangle.getb() )
     {
-      longest = triangle.getLength1();
-      shortSideSum = triangle.getLength0() + triangle.getLength2();
+      longest = triangle.getb();
+      shortSideSum = triangle.geta() + triangle.getc();
     }
-  if ( longest < triangle.getLength2() )
+  if ( longest < triangle.getc() )
     {
-      longest = triangle.getLength2();
-      shortSideSum = triangle.getLength0() + triangle.getLength1();
+      longest = triangle.getc();
+      shortSideSum = triangle.geta() + triangle.getb();
     }
   return longest < shortSideSum;
 }

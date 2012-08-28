@@ -6,15 +6,15 @@ using namespace Triangles;
 
 bool Classifier::hasThreeEqualSides(Triangle triangle) 
 {
-  return triangle.getLength0() == triangle.getLength1() &&
-    triangle.getLength0() == triangle.getLength2();
+  return triangle.geta() == triangle.getb() &&
+    triangle.geta() == triangle.getc();
 }
 
 bool Classifier::hasTwoEqualSides(Triangle triangle)
 {
-  return triangle.getLength0() == triangle.getLength1() ||
-    triangle.getLength0() == triangle.getLength2() ||
-    triangle.getLength1() == triangle.getLength2();
+  return triangle.geta() == triangle.getb() ||
+    triangle.geta() == triangle.getc() ||
+    triangle.getb() == triangle.getc();
 }
 
 Classifier::Type Classifier::classifyByLengths(Triangle triangle)
@@ -38,17 +38,17 @@ Classifier::Type Classifier::classifyByLengths(Triangle triangle)
 bool Classifier::hasNintyDegreeAngle(Triangle triangle)
 {
   FloatMath math = FloatMath();
-  return math.isNinty(triangle.getAngle0()) ||
-    math.isNinty(triangle.getAngle1()) ||
-    math.isNinty(triangle.getAngle2());
+  return math.isNinty(triangle.getA()) ||
+    math.isNinty(triangle.getB()) ||
+    math.isNinty(triangle.getC());
 }
 
 bool Classifier::hasObtuseAngle(Triangle triangle)
 {
   FloatMath math = FloatMath();
-  return math.greaterThanNinty(triangle.getAngle0()) ||
-    math.greaterThanNinty(triangle.getAngle1()) ||
-    math.greaterThanNinty(triangle.getAngle2());
+  return math.greaterThanNinty(triangle.getA()) ||
+    math.greaterThanNinty(triangle.getB()) ||
+    math.greaterThanNinty(triangle.getC());
 }
 
 Classifier::Type Classifier::classifyByAngles(Triangle triangle)

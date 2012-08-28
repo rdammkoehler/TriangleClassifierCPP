@@ -10,39 +10,39 @@ namespace Triangles
   class Triangle 
   {
   public:
-  Triangle(float l0, float l1, float l2, float a0, float a1, float a2) 
-    : length0(l0), 
-      length1(l1), 
-      length2(l2),
-      angle0(a0), 
-      angle1(a1), 
-      angle2(a2)  
+  Triangle(float a, float b, float c, float A, float B, float C) 
+    : a(a), 
+      b(b), 
+      c(c),
+      A(A), 
+      B(B), 
+      C(C)  
     {
     };
 
     ~Triangle() {};
     
-    float getLength0() { return length0; }
-    float getLength1() { return length1; }
-    float getLength2() { return length2; }
-    float getAngle0() { return angle0; }
-    float getAngle1() { return angle1; }
-    float getAngle2() { return angle2; }
+    float geta() { return a; }
+    float getb() { return b; }
+    float getc() { return c; }
+    float getA() { return A; }
+    float getB() { return B; }
+    float getC() { return C; }
     bool hasLengths() 
     {
       FloatMath math = FloatMath();
-      return !( math.isZero(length0) &&
-		math.isZero(length1) &&
-		math.isZero(length2) );
+      return !( math.isZero(a) &&
+		math.isZero(b) &&
+		math.isZero(c) );
     }
 
   private:
-    float length0;
-    float length1;
-    float length2;
-    float angle0;
-    float angle1;
-    float angle2;
+    float a;
+    float b;
+    float c;
+    float A;
+    float B;
+    float C;
   };
 }
 
