@@ -35,9 +35,6 @@ namespace Triangles
     bool hasThreeEqualSides(Triangle);
     bool hasTwoEqualSides(Triangle);
     Type classifyByLengths(Triangle);
-    bool isNinty(float);
-    bool greaterThanNinty(float);
-    bool lessThanNinty(float);
     bool hasNintyDegreeAngle(Triangle);
     bool hasObtuseAngle(Triangle);
     Type classifyByAngles(Triangle);

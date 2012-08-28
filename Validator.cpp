@@ -1,32 +1,13 @@
 #include "Validator.h"
-#include <math.h>
+#include "FloatMath.h"
 #include <float.h>
 
 using namespace Triangles;
 
-bool Validator::equal(float a, float b) 
-{
-  return fabs( a - b ) < FLT_EPSILON;
-}
-
-bool Validator::isZero(float f) 
-{
-  return equal(0.0f, f);
-}
-
-bool Validator::isNegative(float d)
-{
-  return 0.0f > d;
-}
-
-bool Validator::isOneEighty(float f) 
-{
-  return equal(180.0f, f);
-}
-
 bool Validator::hasNegativeAngles(Triangle triangle)
 {
-  return isNegative(triangle.getAngle0()) || isNegative(triangle.getAngle1()) || isNegative(triangle.getAngle2());
+  FloatMath math = FloatMath();
+  return math.isNegative(triangle.getAngle0()) || math.isNegative(triangle.getAngle1()) || math.isNegative(triangle.getAngle2());
 }
 
 float Validator::sumAngles(Triangle triangle)
@@ -36,13 +17,15 @@ float Validator::sumAngles(Triangle triangle)
 
 bool Validator::validAngles(Triangle triangle)
 {
+  FloatMath math = FloatMath();
   float sumOfAngles = sumAngles(triangle);
-  return !hasNegativeAngles(triangle) && ( isZero(sumOfAngles) || isOneEighty(sumOfAngles) );
+  return !hasNegativeAngles(triangle) && ( math.isZero(sumOfAngles) || math.isOneEighty(sumOfAngles) );
 }
 
 bool Validator::lengthIsValid(float length) 
 {
-  return !isZero(length) && !isNegative(length);
+  FloatMath math = FloatMath();
+  return !math.isZero(length) && !math.isNegative(length);
 }
 
 bool Validator::lengthsAreValid(Triangle triangle)

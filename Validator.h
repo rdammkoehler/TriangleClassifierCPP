@@ -9,11 +9,8 @@ namespace Triangles
   {
   public:
     bool isValid(Triangle);
-    bool isZero(float);
-    bool equal(float, float);
+
   private:
-    bool isNegative(float);
-    bool isOneEighty(float);
     float sumAngles(Triangle);
     bool hasNegativeAngles(Triangle);
     bool validAngles(Triangle);
