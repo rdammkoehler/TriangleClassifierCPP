@@ -1,6 +1,5 @@
 #include "Classifier.h"
 #include "Validator.h"
-#include "FloatMath.h"
 
 using namespace Triangles;
 
@@ -37,7 +36,6 @@ Classifier::Type Classifier::classifyByLengths(Triangle triangle)
 
 bool Classifier::hasNintyDegreeAngle(Triangle triangle)
 {
-  FloatMath math = FloatMath();
   return math.isNinty(triangle.getA()) ||
     math.isNinty(triangle.getB()) ||
     math.isNinty(triangle.getC());
@@ -45,7 +43,6 @@ bool Classifier::hasNintyDegreeAngle(Triangle triangle)
 
 bool Classifier::hasObtuseAngle(Triangle triangle)
 {
-  FloatMath math = FloatMath();
   return math.greaterThanNinty(triangle.getA()) ||
     math.greaterThanNinty(triangle.getB()) ||
     math.greaterThanNinty(triangle.getC());

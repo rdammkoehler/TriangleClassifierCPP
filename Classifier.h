@@ -2,6 +2,7 @@
 #define CLASSIFIER_H
 #include "Triangle.h"
 #include "Validator.h"
+#include "FloatMath.h"
 
 namespace Triangles
 {
@@ -20,9 +21,8 @@ namespace Triangles
       invalid 
     };
 
-    Classifier() 
-      {
-	validator = Validator();
+  Classifier() : validator(Validator()), math(FloatMath())
+      {	
       };
 
     ~Classifier() 
@@ -39,6 +39,7 @@ namespace Triangles
     bool hasObtuseAngle(Triangle);
     Type classifyByAngles(Triangle);
     Validator validator;
+    FloatMath math;
   };
 
 }

@@ -1,12 +1,10 @@
 #include "Validator.h"
-#include "FloatMath.h"
 #include <float.h>
 
 using namespace Triangles;
 
 bool Validator::hasNegativeAngles(Triangle triangle)
 {
-  FloatMath math = FloatMath();
   return math.isNegative(triangle.getA()) || math.isNegative(triangle.getB()) || math.isNegative(triangle.getC());
 }
 
@@ -17,14 +15,12 @@ float Validator::sumAngles(Triangle triangle)
 
 bool Validator::validAngles(Triangle triangle)
 {
-  FloatMath math = FloatMath();
   float sumOfAngles = sumAngles(triangle);
   return !hasNegativeAngles(triangle) && ( math.isZero(sumOfAngles) || math.isOneEighty(sumOfAngles) );
 }
 
 bool Validator::lengthIsValid(float length) 
 {
-  FloatMath math = FloatMath();
   return !math.isZero(length) && !math.isNegative(length);
 }
 
@@ -62,7 +58,6 @@ bool Validator::lengthsAreValid(Triangle triangle)
 
 bool Validator::hasLengths(Triangle triangle) 
 {
-  FloatMath math = FloatMath();
   return !( math.isZero(triangle.geta()) &&
 	    math.isZero(triangle.getb()) &&
 	    math.isZero(triangle.getc()) );

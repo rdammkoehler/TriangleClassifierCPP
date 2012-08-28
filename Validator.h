@@ -1,6 +1,7 @@
 #ifndef VALIDATOR_H
 #define VALIDATOR_H
 #include "Triangle.h"
+#include "FloatMath.h"
 
 namespace Triangles
 {
@@ -8,6 +9,12 @@ namespace Triangles
   class Validator
   {
   public:
+  Validator() : math(FloatMath()) 
+      {
+      };
+    ~Validator()
+      {
+      };
     bool isValid(Triangle);
     bool hasLengths(Triangle);
 
@@ -19,6 +26,7 @@ namespace Triangles
     bool lengthsAreValid(Triangle);
     bool longestSideIsntTooLong(Triangle);
     bool validLengths(Triangle);
+    FloatMath math;
   };
 
 }
