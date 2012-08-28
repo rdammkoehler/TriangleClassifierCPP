@@ -70,13 +70,7 @@ bool Validator::hasLengths(Triangle triangle)
 
 bool Validator::validLengths(Triangle triangle) 
 {
-  bool valid = true;
-  if ( hasLengths(triangle) ) 
-    {
-      valid &= lengthsAreValid(triangle);
-      valid &= longestSideIsntTooLong(triangle);
-    }
-  return valid;
+  return !hasLengths(triangle) || (lengthsAreValid(triangle) && longestSideIsntTooLong(triangle));
 }
 
 bool Validator::isValid(Triangle triangle)
