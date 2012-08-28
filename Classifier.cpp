@@ -74,7 +74,7 @@ Classifier::Type Classifier::classify(Triangle triangle)
   Classifier::Type type = invalid;
   if ( validator.isValid(triangle) ) 
     {
-      if ( triangle.hasLengths() )
+      if ( validator.hasLengths(triangle) )
 	{
 	  type = classifyByLengths(triangle);
 	} 

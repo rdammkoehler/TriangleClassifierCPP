@@ -7,6 +7,7 @@
 namespace Triangles 
 {
 
+  //a, b, c are lengths, A, B, C are angles opposite those sides
   class Triangle 
   {
   public:
@@ -28,13 +29,6 @@ namespace Triangles
     float getA() { return A; }
     float getB() { return B; }
     float getC() { return C; }
-    bool hasLengths() 
-    {
-      FloatMath math = FloatMath();
-      return !( math.isZero(a) &&
-		math.isZero(b) &&
-		math.isZero(c) );
-    }
 
   private:
     float a;

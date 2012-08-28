@@ -59,10 +59,19 @@ bool Validator::longestSideIsntTooLong(Triangle triangle)
   return longest < shortSideSum;
 }
 
+
+bool Validator::hasLengths(Triangle triangle) 
+{
+  FloatMath math = FloatMath();
+  return !( math.isZero(triangle.geta()) &&
+	    math.isZero(triangle.getb()) &&
+	    math.isZero(triangle.getc()) );
+}
+
 bool Validator::validLengths(Triangle triangle) 
 {
   bool valid = true;
-  if ( triangle.hasLengths() ) 
+  if ( hasLengths(triangle) ) 
     {
       valid &= lengthsAreValid(triangle);
       valid &= longestSideIsntTooLong(triangle);

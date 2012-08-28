@@ -9,6 +9,7 @@ namespace Triangles
   {
   public:
     bool isValid(Triangle);
+    bool hasLengths(Triangle);
 
   private:
     float sumAngles(Triangle);
