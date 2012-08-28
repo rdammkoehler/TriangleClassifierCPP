@@ -28,15 +28,6 @@ bool Validator::lengthIsValid(float length)
   return !math.isZero(length) && !math.isNegative(length);
 }
 
-bool Validator::lengthsAreValid(Triangle triangle)
-{
-  bool valid = true;
-  valid &= lengthIsValid(triangle.geta());
-  valid &= lengthIsValid(triangle.getb());
-  valid &= lengthIsValid(triangle.getc());
-  return valid;
-}
-
 bool Validator::longestSideIsntTooLong(Triangle triangle)
 {
   float longest = FLT_MIN;
@@ -59,6 +50,15 @@ bool Validator::longestSideIsntTooLong(Triangle triangle)
   return longest < shortSideSum;
 }
 
+bool Validator::lengthsAreValid(Triangle triangle)
+{
+  bool valid = true;
+  valid &= lengthIsValid(triangle.geta());
+  valid &= lengthIsValid(triangle.getb());
+  valid &= lengthIsValid(triangle.getc());
+  valid &= longestSideIsntTooLong(triangle);
+  return valid;
+}
 
 bool Validator::hasLengths(Triangle triangle) 
 {
@@ -70,7 +70,7 @@ bool Validator::hasLengths(Triangle triangle)
 
 bool Validator::validLengths(Triangle triangle) 
 {
-  return !hasLengths(triangle) || (lengthsAreValid(triangle) && longestSideIsntTooLong(triangle));
+  return !hasLengths(triangle) || lengthsAreValid(triangle);
 }
 
 bool Validator::isValid(Triangle triangle)
