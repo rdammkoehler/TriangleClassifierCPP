@@ -21,7 +21,9 @@ namespace Triangles
       invalid 
     };
 
-  Classifier() : validator(Validator()), math(FloatMath())
+  Classifier() : 
+    validator(Validator()), 
+      math(FloatMath())
       {	
       };
 

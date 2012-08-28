@@ -9,7 +9,8 @@ namespace Triangles
   class Validator
   {
   public:
-  Validator() : math(FloatMath()) 
+  Validator() : 
+    math(FloatMath()) 
       {
       };
     ~Validator()
