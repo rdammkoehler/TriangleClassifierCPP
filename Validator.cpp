@@ -5,7 +5,9 @@ using namespace Triangles;
 
 bool Validator::hasNegativeAngles(Triangle triangle)
 {
-  return math.isNegative(triangle.getA()) || math.isNegative(triangle.getB()) || math.isNegative(triangle.getC());
+  return math.isNegative(triangle.getA()) || 
+         math.isNegative(triangle.getB()) || 
+         math.isNegative(triangle.getC());
 }
 
 float Validator::sumAngles(Triangle triangle)
@@ -16,12 +18,16 @@ float Validator::sumAngles(Triangle triangle)
 bool Validator::validAngles(Triangle triangle)
 {
   float sumOfAngles = sumAngles(triangle);
-  return !hasNegativeAngles(triangle) && ( math.isZero(sumOfAngles) || math.isOneEighty(sumOfAngles) );
+  return !hasNegativeAngles(triangle) && 
+         ( math.isZero(sumOfAngles) || 
+           math.isOneEighty(sumOfAngles) 
+         );
 }
 
 bool Validator::lengthIsValid(float length) 
 {
-  return !math.isZero(length) && !math.isNegative(length);
+  return !math.isZero(length) && 
+         !math.isNegative(length);
 }
 
 bool Validator::longestSideIsntTooLong(Triangle triangle)
